@@ -1,0 +1,13 @@
+.sectionList {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    width: 70%;
+    text-align: center;
+
+    .link {
+        text-decoration: none;
+        color: black;
+    }
+}

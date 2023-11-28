@@ -1,7 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import style from "../assets/SCSS/Navbar.module.scss";
+import { faClose } from "@fortawesome/free-solid-svg-icons";
+import { useSelector, useDispatch } from "react-redux";
+import { open, close } from "../app/menuSlice";
+import { Link } from "react-router-dom";
+import style from "../assets/SCSS/components/Navbar.module.scss";
 import Logo from "../assets/img/logo.svg";
 
 export default function Navbar() {
@@ -39,16 +43,27 @@ export default function Navbar() {
 
   const formatDate = `${dayOfWeek}, ${month} ${day}, ${year}`;
 
+  const { isOpen } = useSelector((state) => state.menuState);
+  const dispatch = useDispatch();
+
   return (
     <nav>
       <div className={style.navWrapper}>
-        <FontAwesomeIcon icon={faBars} />
-        <img src={Logo} />
-        <FontAwesomeIcon icon={faUser} />
+        {isOpen ? (
+          <FontAwesomeIcon icon={faClose} onClick={() => dispatch(close())} />
+        ) : (
+          <FontAwesomeIcon icon={faBars} onClick={() => dispatch(open())} />
+        )}
+        <Link to="/">
+          <img src={Logo} />
+        </Link>
+        <FontAwesomeIcon icon={faUser} className={style.userIcon} />
       </div>
-      <div className={style.navDate}>
-        <p>{formatDate}</p>
-      </div>
+      {!isOpen && (
+        <div className={style.navDate}>
+          <p>{formatDate}</p>
+        </div>
+      )}
     </nav>
   );
 }

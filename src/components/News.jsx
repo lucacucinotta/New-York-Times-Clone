@@ -1,11 +1,24 @@
-import style from "../assets/SCSS/News.module.scss";
+import style from "../assets/SCSS/components/News.module.scss";
 import PropTypes from "prop-types";
 
 export default function News({ newsProp, showAllInfo }) {
   return (
     <>
       <div className={style.newsCard}>
-        <p className={style.newsLabel}>{newsProp.section}</p>
+        <p className={style.newsLabel}>
+          {(() => {
+            switch (newsProp.section) {
+              case "us":
+                return "U.S.";
+              case "nyregion":
+                return "N.Y.";
+              case "realestate":
+                return "Real Estate";
+              default:
+                return newsProp.section;
+            }
+          })()}
+        </p>
         <a
           href={newsProp.url}
           target="_blank"
