@@ -26,43 +26,55 @@ export default function News({ newsProp, showAllInfo }) {
   const formatDate = `${month} ${day}, ${year}`;
   return (
     <>
-      <div className={style.newsCard}>
-        <div className={style.newsInfo}>
-          <p className={style.newsLabel}>
-            {(() => {
-              switch (newsProp.section) {
-                case "us":
-                  return "U.S.";
-                case "nyregion":
-                  return "N.Y.";
-                case "realestate":
-                  return "Real Estate";
-                default:
-                  return newsProp.section;
+      {newsProp.title ? (
+        <div className={style.newsCard}>
+          <div className={style.newsInfo}>
+            <p className={style.newsLabel}>
+              {newsProp.section
+                ? (() => {
+                    switch (newsProp.section) {
+                      case "us":
+                        return "U.S.";
+                      case "nyregion":
+                        return "N.Y.";
+                      case "realestate":
+                        return "Real Estate";
+                      default:
+                        return newsProp.section;
+                    }
+                  })()
+                : null}
+            </p>
+            <span className={style.newsPublishedDate}>{formatDate}</span>
+          </div>
+          <a
+            href={newsProp.url ? newsProp.url : null}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={style.newsTitle}
+          >
+            <h1>{newsProp.title ? newsProp.title : null}</h1>
+          </a>
+          <span className={style.newsCreator}>
+            {newsProp.byline ? newsProp.byline : null}
+          </span>
+          {showAllInfo && (
+            <>
+              <p className={style.newsBody}>
+                {newsProp.abstract ? newsProp.abstract : null}
+              </p>
+              {
+                <img
+                  src={newsProp.multimedia ? newsProp.multimedia[0].url : null}
+                />
               }
-            })()}
-          </p>
-          <span className={style.newsPublishedDate}>{formatDate}</span>
+              <span className={style.copyright}>
+                {newsProp.multimedia ? newsProp.multimedia[0].copyright : null}
+              </span>
+            </>
+          )}
         </div>
-        <a
-          href={newsProp.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={style.newsTitle}
-        >
-          <h1>{newsProp.title}</h1>
-        </a>
-        <span className={style.newsCreator}>{newsProp.byline}</span>
-        {showAllInfo && (
-          <>
-            <p className={style.newsBody}>{newsProp.abstract}</p>
-            <img src={newsProp.multimedia[0].url} />
-            <span className={style.copyright}>
-              {newsProp.multimedia[0].copyright}
-            </span>
-          </>
-        )}
-      </div>
+      ) : null}
     </>
   );
 }

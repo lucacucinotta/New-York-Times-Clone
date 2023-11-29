@@ -3,6 +3,7 @@ import { change } from "../app/searchMenuSlice";
 import { close } from "../app/sectionMenuSlice";
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
+import { DotLoader } from "react-spinners";
 import Navbar from "../components/Navbar";
 import SectionsLayout from "../components/SectionsLayout";
 import News from "../components/News";
@@ -65,7 +66,9 @@ export default function Home() {
         <>
           <main>
             {isLoading ? (
-              <div>Is Loading</div>
+              <div className={style.loadingDiv}>
+                <DotLoader size={200} color="#c7c7c7" />
+              </div>
             ) : (
               <div className={style.newsContainer}>
                 {data.results.map((news, index) => (

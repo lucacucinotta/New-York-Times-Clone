@@ -3,6 +3,7 @@ import { change } from "../app/searchMenuSlice";
 import { close } from "../app/sectionMenuSlice";
 import { useQuery } from "react-query";
 import { useParams, useNavigate } from "react-router-dom";
+import { DotLoader } from "react-spinners";
 import Navbar from "../components/Navbar";
 import SectionsLayout from "../components/SectionsLayout";
 import News from "../components/News";
@@ -32,7 +33,6 @@ export default function Section() {
     queryFn: fetchNews,
     enabled: !!sectionName,
   });
-
   return (
     <>
       <header>
@@ -68,7 +68,9 @@ export default function Section() {
         <>
           <main>
             {isLoading ? (
-              <div>is Loading</div>
+              <div className={style.loadingDiv}>
+                <DotLoader size={200} color="#c7c7c7" />
+              </div>
             ) : (
               <div className={style.newsContainer}>
                 <h1 className={style.newsSection}>
