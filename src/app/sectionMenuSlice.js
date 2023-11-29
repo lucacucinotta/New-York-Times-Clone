@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const menuSlice = createSlice({
-  name: "searchMenu",
+export const sectionMenuSlice = createSlice({
+  name: "sectionMenu",
   initialState: {
     isOpen: false,
   },
@@ -15,6 +15,6 @@ export const menuSlice = createSlice({
   },
 });
 
-export const { open, close } = menuSlice.actions;
+export const { open, close } = sectionMenuSlice.actions;
 
-export default menuSlice.reducer;
+export default sectionMenuSlice.reducer;

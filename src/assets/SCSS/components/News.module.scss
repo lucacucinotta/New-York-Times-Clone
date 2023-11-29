@@ -5,12 +5,26 @@
     gap: 10px;
     padding-bottom: 10px;
 
-    .newsLabel {
-        background-color: #c7c7c7;
-        text-transform: capitalize;
-        padding: 5px;
-        width: fit-content;
+    .newsInfo {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        .newsLabel {
+            background-color: #c7c7c7;
+            text-transform: capitalize;
+            padding: 5px;
+            width: fit-content;
+        }
+
+        .newsPublishedDate {
+            font-size: 15px;
+            color: #727272;
+        }
     }
+
+
 
     .newsTitle {
         text-decoration: none;

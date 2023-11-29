@@ -4,11 +4,16 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 15px;
+    border-bottom: 1px solid #e2e2e2;
+
+    .icon {
+        width: 15px;
+        height: 15px;
+    }
 }
 
 .navDate {
     background-color: #f7f7f7;
-    border-top: 1px solid #e2e2e2;
     border-bottom: 1px solid #e2e2e2;
     padding: 10px 15px;
     font-weight: bold;

@@ -1,10 +1,3 @@
-.newsContainer {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    gap: 10px;
-}
-
 .searchDiv {
     display: flex;
     flex-direction: column;
@@ -42,6 +35,34 @@
         width: 100%;
         height: 100vh;
     }
+
+    .sectionList {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+        width: 70%;
+        text-align: center;
+    }
+}
+
+.newsContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px 20px 20px;
+    gap: 10px;
+
+    .preNews {
+        padding-bottom: 10px;
+        border-bottom: 1px solid #e2e2e2;
+
+        .preTitle {
+            color: #666;
+        }
+
+    }
+
+
 }
 
 @media screen and (max-width:425px) {

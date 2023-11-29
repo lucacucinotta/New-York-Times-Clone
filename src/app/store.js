@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import menuReducer from "./menuSlice";
+import sectionMenuReducer from "./sectionMenuSlice";
+import searchMenuReducer from "./searchMenuSlice";
 
 export default configureStore({
   reducer: {
-    menuState: menuReducer,
+    sectionMenuState: sectionMenuReducer,
+    searchMenuState: searchMenuReducer,
   },
 });

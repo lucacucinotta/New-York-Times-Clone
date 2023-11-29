@@ -1,8 +1,8 @@
 import style from "../assets/SCSS/components/News.module.scss";
 import PropTypes from "prop-types";
 
-export default function News({ newsProp, showAllInfo }) {
-  const date = new Date(newsProp.published_date);
+export default function SearchNews({ newsProp }) {
+  const date = new Date(newsProp.pub_date);
   const day = date.getDate();
   const year = date.getFullYear();
 
@@ -30,7 +30,7 @@ export default function News({ newsProp, showAllInfo }) {
         <div className={style.newsInfo}>
           <p className={style.newsLabel}>
             {(() => {
-              switch (newsProp.section) {
+              switch (newsProp.section_name) {
                 case "us":
                   return "U.S.";
                 case "nyregion":
@@ -38,36 +38,27 @@ export default function News({ newsProp, showAllInfo }) {
                 case "realestate":
                   return "Real Estate";
                 default:
-                  return newsProp.section;
+                  return newsProp.section_name;
               }
             })()}
           </p>
           <span className={style.newsPublishedDate}>{formatDate}</span>
         </div>
         <a
-          href={newsProp.url}
+          href={newsProp.web_url}
           target="_blank"
           rel="noopener noreferrer"
           className={style.newsTitle}
         >
-          <h1>{newsProp.title}</h1>
+          <h1>{newsProp.headline.main}</h1>
         </a>
-        <span className={style.newsCreator}>{newsProp.byline}</span>
-        {showAllInfo && (
-          <>
-            <p className={style.newsBody}>{newsProp.abstract}</p>
-            <img src={newsProp.multimedia[0].url} />
-            <span className={style.copyright}>
-              {newsProp.multimedia[0].copyright}
-            </span>
-          </>
-        )}
+        <span className={style.newsCreator}>{newsProp.byLine}</span>
+        <p className={style.newsBody}>{newsProp.abstract}</p>
       </div>
     </>
   );
 }
 
-News.propTypes = {
+SearchNews.propTypes = {
   newsProp: PropTypes.object.isRequired,
-  showAllInfo: PropTypes.bool.isRequired,
 };

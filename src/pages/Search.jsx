@@ -5,11 +5,11 @@ import { useQuery } from "react-query";
 import { useParams, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import SectionsLayout from "../components/SectionsLayout";
-import News from "../components/News";
+import SearchNews from "../components/SearchNews";
 import Footer from "../components/Footer";
-import style from "../assets/SCSS/pages/Section.module.scss";
+import style from "../assets/SCSS/pages/Search.module.scss";
 
-export default function Section() {
+export default function Search() {
   const API_KEY = import.meta.env.VITE_API_KEY;
 
   const { isOpen } = useSelector((state) => state.sectionMenuState);
@@ -18,19 +18,20 @@ export default function Section() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { sectionName } = useParams();
+  const { searchQuery } = useParams();
 
   const fetchNews = async () => {
     const res = await fetch(
-      `https://api.nytimes.com/svc/topstories/v2/${sectionName}.json?api-key=${API_KEY}`
+      `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchQuery}&api-key=${API_KEY}`
     );
     return await res.json();
   };
 
   const { data, isLoading } = useQuery({
-    queryKey: ["news", sectionName],
+    queryKey: ["news", searchQuery],
     queryFn: fetchNews,
-    enabled: !!sectionName,
+    enabled: !!searchQuery,
+    onSuccess: () => dispatch(change("")),
   });
 
   return (
@@ -68,31 +69,20 @@ export default function Section() {
         <>
           <main>
             {isLoading ? (
-              <div>is Loading</div>
+              <div>Is Loading</div>
             ) : (
               <div className={style.newsContainer}>
-                <h1 className={style.newsSection}>
-                  {(() => {
-                    switch (sectionName) {
-                      case "us":
-                        return "U.S.";
-                      case "nyregion":
-                        return "N.Y.";
-                      case "realestate":
-                        return "Real Estate";
-                      default:
-                        return sectionName;
-                    }
-                  })()}{" "}
-                  News
-                </h1>
-                {data.results.map((news, index) => (
-                  <News
-                    key={news.title}
-                    newsProp={news}
-                    showAllInfo={index % 3 === 0}
-                  />
-                ))}
+                <div className={style.preNews}>
+                  <p className={style.preTitle}>Showing result for : </p>
+                  <h1 className={style.searchTitle}>{searchQuery}</h1>
+                </div>
+                {data.response.docs.lenght === 0 ? (
+                  <p>No results found</p>
+                ) : (
+                  data.response.docs.map((news) => (
+                    <SearchNews key={news.headline.main} newsProp={news} />
+                  ))
+                )}
               </div>
             )}
           </main>
@@ -102,3 +92,11 @@ export default function Section() {
     </>
   );
 }
+
+// import { useParams } from "react-router-dom";
+
+// export default function Search() {
+//   const { searchQuery } = useParams();
+
+//   return <h1>{searchQuery}</h1>;
+// }
