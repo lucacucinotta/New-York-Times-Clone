@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { close } from "../app/sectionMenuSlice";
+import { close } from "../states/sectionMenuSlice";
 
 export default function SectionsLayout() {
   const dispatch = useDispatch();

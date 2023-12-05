@@ -1,63 +1,15 @@
-.searchDiv {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
-    width: 100%;
-    padding-top: 20px;
-    gap: 50px;
-
-    .searchForm {
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-    }
-
-    .searchBar {
-        padding: 10px;
-        background-color: #ffffff;
-        border: 1px solid rgb(120, 120, 120);
-        border-radius: 3px;
-    }
-
-    .searchButton {
-        padding: 10px;
-        background-color: #567b95;
-        border: 1px solid rgb(50, 104, 145);
-        color: #ffffff;
-        border-radius: 3px;
-    }
-
-    .sectionDiv {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        height: 100vh;
-    }
-
-    .sectionList {
-        margin-top: 20px;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 40px;
-        width: 70%;
-        text-align: center;
-    }
-}
-
 .notFoundDiv {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 10px 20px 20px 20px;
+    padding: 20px;
     gap: 10px;
-    height: 75vh;
+    height: 55vh;
 
     .redirect {
         text-decoration: none;
         color: #567b95;
-        font-size: 10px;
+        font-size: 12px;
     }
 
     .notFoundMessage {
@@ -68,13 +20,14 @@
 
     .notFoundForm {
         display: flex;
-        flex-direction: column;
-        gap: 1px;
+        flex-direction: row;
+        gap: 10px;
 
         .notFoundBar {
-            height: 35px;
             border: 1px solid gray;
             padding: 5px;
+            height: 30px;
+            width: 200x;
         }
 
         .notFoundButton {
@@ -82,31 +35,32 @@
             border-radius: 3px;
             font-weight: bold;
             padding: 8px 5px;
+            height: 30px;
             width: 15%;
             color: #666;
         }
     }
 }
 
-@media screen and (max-width:425px) {
-    .searchDiv {
-        .searchForm {
+@media screen and (max-width:424.98px) {
+    .notFoundDiv {
+        .notFoundForm {
             width: 100%;
         }
 
-        .searchBar {
+        .notFoundBar {
             width: 50%;
         }
     }
 }
 
 @media screen and (min-width:425px) {
-    .searchDiv {
-        .searchForm {
+    .notFoundDiv {
+        .notFoundForm {
             width: 424px;
         }
 
-        .searchBar {
+        .notFoundBar {
             width: 212px;
         }
     }

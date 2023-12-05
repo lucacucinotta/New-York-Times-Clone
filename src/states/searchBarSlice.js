@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const searchMenuSlice = createSlice({
-  name: "searchMenu",
+export const searchBarSlice = createSlice({
+  name: "searchBar",
   initialState: {
     searchData: "",
   },
@@ -12,6 +12,6 @@ export const searchMenuSlice = createSlice({
   },
 });
 
-export const { change } = searchMenuSlice.actions;
+export const { change } = searchBarSlice.actions;
 
-export default searchMenuSlice.reducer;
+export default searchBarSlice.reducer;

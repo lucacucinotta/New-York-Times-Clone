@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Section from "./pages/Section";
 import Search from "./pages/Search";
 import NotFound from "./pages/NotFound";
+import "./assets/SCSS/index.scss";
 
 export default function App() {
   return (

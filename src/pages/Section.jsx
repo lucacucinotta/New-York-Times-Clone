@@ -1,12 +1,13 @@
 import { useSelector, useDispatch } from "react-redux";
-import { change } from "../app/searchMenuSlice";
-import { close } from "../app/sectionMenuSlice";
+import { change } from "../states/searchBarSlice";
+import { close } from "../states/sectionMenuSlice";
 import { useQuery } from "react-query";
 import { useParams, useNavigate } from "react-router-dom";
 import { DotLoader } from "react-spinners";
+import axios from "axios";
 import Navbar from "../components/Navbar";
 import SectionsLayout from "../components/SectionsLayout";
-import News from "../components/News";
+import Article from "../components/Article";
 import Footer from "../components/Footer";
 import style from "../assets/SCSS/pages/Section.module.scss";
 
@@ -14,25 +15,31 @@ export default function Section() {
   const API_KEY = import.meta.env.VITE_API_KEY;
 
   const { isOpen } = useSelector((state) => state.sectionMenuState);
-  const { searchData } = useSelector((state) => state.searchMenuState);
+  const { searchData } = useSelector((state) => state.searchBarState);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { sectionName } = useParams();
 
-  const fetchNews = async () => {
-    const res = await fetch(
+  const fetchArticle = async () => {
+    const res = await axios.get(
       `https://api.nytimes.com/svc/topstories/v2/${sectionName}.json?api-key=${API_KEY}`
     );
-    return await res.json();
+    return res.data.results;
   };
 
-  const { data, isLoading } = useQuery({
-    queryKey: ["news", sectionName],
-    queryFn: fetchNews,
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ["article", sectionName],
+    queryFn: fetchArticle,
     enabled: !!sectionName,
   });
+
+  if (isError) {
+    navigate(`*`);
+    console.log(error.message);
+  }
+
   return (
     <>
       <header>
@@ -57,9 +64,9 @@ export default function Section() {
             />
             <button className={style.searchButton}>GO</button>
           </form>
-          <div className={style.sectionDiv}>
-            <h3>News</h3>
-            <div className={style.sectionList}>
+          <div className={style.sectionsDiv}>
+            <h3>Sections</h3>
+            <div className={style.sectionsList}>
               <SectionsLayout />
             </div>
           </div>
@@ -72,8 +79,8 @@ export default function Section() {
                 <DotLoader size={200} color="#c7c7c7" />
               </div>
             ) : (
-              <div className={style.newsContainer}>
-                <h1 className={style.newsSection}>
+              <>
+                <h1 className={style.articleSection}>
                   {(() => {
                     switch (sectionName) {
                       case "us":
@@ -85,17 +92,14 @@ export default function Section() {
                       default:
                         return sectionName;
                     }
-                  })()}{" "}
-                  News
+                  })()}
                 </h1>
-                {data.results.map((news, index) => (
-                  <News
-                    key={news.title}
-                    newsProp={news}
-                    showAllInfo={index % 3 === 0}
-                  />
-                ))}
-              </div>
+                <div className={style.articleContainer}>
+                  {data.map((article) => (
+                    <Article key={article.title} articleProp={article} />
+                  ))}
+                </div>
+              </>
             )}
           </main>
           <Footer />

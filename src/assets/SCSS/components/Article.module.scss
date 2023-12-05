@@ -1,0 +1,184 @@
+.articleCard {
+    border-bottom: 1px solid #e2e2e2;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 0;
+
+    .articleInfo {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        .articleLabel {
+            background-color: #c7c7c7;
+            text-transform: capitalize;
+            padding: 5px;
+            width: fit-content;
+        }
+
+        .articlePublishedDate {
+            color: #727272;
+            display: none;
+        }
+    }
+
+    .mainContent {
+        display: grid;
+        gap: 10px;
+
+        .articleText {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .articleLink {
+                text-decoration: none;
+                color: black;
+            }
+
+            .articleTitle {
+                font-size: 20px;
+            }
+
+            .articleCreator {
+                color: #727272;
+                font-size: 13px;
+            }
+
+            .articleBody {
+                display: none;
+                line-height: 20px;
+            }
+
+        }
+
+        .articleImg {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .img {
+                display: none;
+                width: 100%;
+            }
+
+            .copyright {
+                display: none;
+                color: #727272;
+                font-size: 10px;
+                text-align: end;
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width:767.98px) {
+    .articleCard:last-of-type {
+        border-bottom: none;
+    }
+
+    .articleCard:nth-child(3n+1) {
+        .articleInfo .articlePublishedDate {
+            display: inline;
+        }
+
+        .mainContent {
+            .articleText {
+                .articleTitle {
+                    font-size: 30px;
+                }
+
+                .articleBody {
+                    display: inline;
+                }
+            }
+
+            .articleImg {
+                .img {
+                    display: inline;
+                }
+
+                .copyright {
+                    display: inline;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023.98px) {
+    .articleCard:nth-child(5n+1) {
+        grid-column: 1/-1;
+
+        .articleInfo .articlePublishedDate {
+            display: inline;
+        }
+
+        .mainContent {
+            grid-template-columns: repeat(2, 1fr);
+
+            .articleText {
+                .articleTitle {
+                    font-size: 30px;
+                }
+
+                .articleBody {
+                    display: inline;
+                }
+            }
+
+            .articleImg {
+                .img {
+                    display: inline;
+                }
+
+                .copyright {
+                    display: inline;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width:1024px) {
+
+    .articleCard:nth-child(4n+1) {
+        grid-column: 1/-1;
+
+        .articleInfo .articlePublishedDate {
+            display: inline;
+        }
+
+        .mainContent {
+            grid-template-columns: repeat(2, 1fr);
+
+            .articleText {
+                .articleTitle {
+                    font-size: 30px;
+                    max-width: 450px;
+                }
+
+                .articleBody {
+                    display: inline;
+                    max-width: 450px;
+                }
+            }
+
+            .articleImg {
+                .img {
+                    display: inline;
+                    max-width: 600px;
+                    max-height: 400px;
+                    object-fit: cover;
+                }
+
+                .copyright {
+                    display: inline;
+                }
+            }
+        }
+    }
+}

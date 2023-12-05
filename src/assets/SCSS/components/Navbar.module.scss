@@ -3,41 +3,127 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 15px;
     border-bottom: 1px solid #e2e2e2;
+    padding: 10px 15px;
+
+    .searchDiv>.icon:nth-child(2) {
+        display: none;
+    }
+
+    .empty {
+        width: 15px;
+        height: 15px;
+        visibility: hidden;
+    }
 
     .icon {
         width: 15px;
         height: 15px;
+        cursor: pointer;
     }
 }
 
 .navDate {
+    font-size: 12px;
     background-color: #f7f7f7;
     border-bottom: 1px solid #e2e2e2;
     padding: 10px 15px;
     font-weight: bold;
 }
 
-/*SMARTPHONE*/
-@media screen and (min-width:320px) and (max-width:1024px) {
-    .navDate {
-        font-size: 11px;
+.navSections {
+    padding: 15px 15px;
+    gap: 10px;
+    border-bottom: 1px solid #e2e2e2;
+    display: none;
+}
+
+.searchBarDiv {
+    margin: 25px 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    .searchForm {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
     }
 
-    .accountButton {
-        display: none;
+    .searchBar {
+        padding: 10px;
+        background-color: #ffffff;
+        border: 1px solid rgb(120, 120, 120);
+        border-radius: 3px;
+        width: 500px;
+    }
+
+    .searchButton {
+        padding: 10px;
+        background-color: #567b95;
+        border: 1px solid rgb(50, 104, 145);
+        color: #ffffff;
+        border-radius: 3px;
     }
 }
 
+@media screen and (min-width: 768px) and (max-width:1023.98px) {
+    .navWrapper {
+        padding-top: 15px;
+
+        .logo {
+            height: 40px;
+        }
+
+        .icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .empty {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
+
+
 @media screen and (min-width:1024px) {
-    .userIcon {
-        display: none;
+    .navWrapper {
+        border-bottom: none;
+        padding-top: 20px;
+
+        .logo {
+            height: 60px;
+        }
+
+        .icon {
+            width: 22px;
+            height: 22px;
+        }
+
+        .empty {
+            width: 22px;
+            height: 22px;
+        }
+
+        .searchDiv>.icon:nth-child(1) {
+            display: none;
+        }
+
+        .searchDiv>.icon:nth-child(2) {
+            display: inline;
+        }
     }
 
-    .accountButton {
+    .navDate {
+        font-size: 15px;
+        background-color: transparent;
+        padding: 5px 15px;
+    }
+
+    .navSections {
         display: flex;
-        flex-direction: row;
-        gap: 10px;
+        justify-content: space-between;
     }
 }

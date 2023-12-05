@@ -1,10 +1,3 @@
-.loadingDiv {
-    height: 75vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .searchDiv {
     display: flex;
     flex-direction: column;
@@ -22,7 +15,6 @@
 
     .searchBar {
         padding: 10px;
-        background-color: #ffffff;
         border: 1px solid rgb(120, 120, 120);
         border-radius: 3px;
     }
@@ -35,15 +27,14 @@
         border-radius: 3px;
     }
 
-    .sectionDiv {
+    .sectionsDiv {
         display: flex;
         flex-direction: column;
         align-items: center;
         width: 100%;
-        height: 100vh;
     }
 
-    .sectionList {
+    .sectionsList {
         margin-top: 20px;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -53,9 +44,15 @@
     }
 }
 
-.newsContainer {
+.loadingDiv {
+    height: 75vh;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.articleContainer {
+    display: grid;
     padding: 10px 20px 20px 20px;
     gap: 10px;
 }
@@ -81,5 +78,18 @@
         .searchBar {
             width: 212px;
         }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .articleContainer {
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+    }
+}
+
+@media screen and (min-width:1024px) {
+    .articleContainer {
+        grid-template-columns: repeat(3, 1fr);
     }
 }

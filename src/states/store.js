@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import sectionMenuReducer from "./sectionMenuSlice";
-import searchMenuReducer from "./searchMenuSlice";
+import searchBarReducer from "./searchBarSlice";
+import searchBarShownReducer from "./searchBarShownSlice";
 
 export default configureStore({
   reducer: {
     sectionMenuState: sectionMenuReducer,
-    searchMenuState: searchMenuReducer,
+    searchBarState: searchBarReducer,
+    searchBarShownState: searchBarShownReducer,
   },
 });
