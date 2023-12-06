@@ -1,3 +1,65 @@
+.extraDiv {
+    padding: 10px 15px;
+    position: relative;
+    display: none;
+
+    .icon {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        color: black;
+    }
+
+
+    .languages {
+        font-size: 10px;
+        display: flex;
+        gap: 5px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    .languages>* {
+        padding: 5px;
+        color: black;
+        text-decoration: none;
+        font-weight: 500;
+        cursor: pointer;
+    }
+
+    .languages>span {
+        font-weight: 900;
+    }
+
+    .languages>*:hover {
+        background-color: #f7f7f7;
+    }
+
+    .extraButtonDiv {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+        align-items: center;
+        justify-content: center;
+        height: 20px;
+    }
+
+    .extraButton {
+        padding: 7px 10px;
+        border-radius: 3px;
+        background-color: #567b95;
+        border: none;
+        color: white;
+        cursor: pointer;
+        font-size: 10px;
+        font-weight: bold;
+    }
+}
+
+
 .navWrapper {
     display: flex;
     flex-direction: row;
@@ -89,31 +151,26 @@
 
 
 @media screen and (min-width:1024px) {
+    .extraDiv {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
     .navWrapper {
         border-bottom: none;
-        padding-top: 20px;
+        justify-content: center;
+        padding-top: 0;
 
         .logo {
             height: 60px;
         }
 
         .icon {
-            width: 22px;
-            height: 22px;
-        }
-
-        .empty {
-            width: 22px;
-            height: 22px;
-        }
-
-        .searchDiv>.icon:nth-child(1) {
             display: none;
         }
 
-        .searchDiv>.icon:nth-child(2) {
-            display: inline;
-        }
     }
 
     .navDate {

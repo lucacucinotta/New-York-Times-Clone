@@ -1,13 +1,23 @@
 import style from "../assets/SCSS/components/Footer.module.scss";
 import Logo from "../assets/img/logo.svg";
 import SectionsLayout from "./SectionsLayout";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
     <footer>
       <div className={style.footerWrapper}>
         <div className={style.footerLine}></div>
-        <img src={Logo} className={style.logo} />
+        <Link
+          to="/"
+          onClick={() => {
+            if (location.pathname === "/") {
+              window.scrollTo(0, 0);
+            }
+          }}
+        >
+          <img src={Logo} />
+        </Link>
         <span className={style.footerThinLine}></span>
         <div className={style.sectionList}>
           <SectionsLayout />

@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useSelector, useDispatch } from "react-redux";
 import { open, close } from "../states/sectionMenuSlice";
 import { change } from "../states/searchBarSlice";
@@ -56,29 +57,46 @@ export default function Navbar() {
 
   return (
     <nav>
-      <div className={style.navWrapper}>
-        <div className={style.searchDiv}>
-          {isOpen ? (
-            <div className={style.empty}></div>
-          ) : (
-            <FontAwesomeIcon
-              icon={faBars}
-              className={style.icon}
-              onClick={() => dispatch(open())}
-            />
-          )}
-          <FontAwesomeIcon
-            icon={faSearch}
-            className={style.icon}
-            onClick={() => {
-              if (isShown) {
-                dispatch(hide());
-              } else {
-                dispatch(show());
-              }
-            }}
-          />
+      <div className={style.extraDiv}>
+        <FontAwesomeIcon
+          icon={faSearch}
+          className={style.icon}
+          onClick={() => {
+            if (isShown) {
+              dispatch(hide());
+            } else {
+              dispatch(show());
+            }
+          }}
+        />
+        <div className={style.languages}>
+          <span> U.S.</span>
+          <a href="https://www.nytimes.com/international">INTERNATIONAL</a>
+          <a href="https://www.nytimes.com/ca">CANADA</a>
+          <a href="https://www.nytimes.com/es">ESPANOL</a>
+          <a href="https://cn.nytimes.com/">中文</a>
         </div>
+        <div className={style.extraButtonDiv}>
+          <a href="https://www.nytimes.com/subscription">
+            <button className={style.extraButton}>
+              SUBSCRIBE FOR 0.50 A WEEK
+            </button>
+          </a>
+          <a href="https://myaccount.nytimes.com">
+            <button className={style.extraButton}>LOG IN</button>
+          </a>
+        </div>
+      </div>
+      <div className={style.navWrapper}>
+        {isOpen ? (
+          <div className={style.empty}></div>
+        ) : (
+          <FontAwesomeIcon
+            icon={faBars}
+            className={style.icon}
+            onClick={() => dispatch(open())}
+          />
+        )}
         <Link to="/">
           <img
             src={Logo}
@@ -93,7 +111,9 @@ export default function Navbar() {
             onClick={() => dispatch(close())}
           />
         ) : (
-          <div className="empty"></div>
+          <a href="https://myaccount.nytimes.com">
+            <FontAwesomeIcon icon={faUser} className={style.icon} />
+          </a>
         )}
       </div>
       {!isOpen && (

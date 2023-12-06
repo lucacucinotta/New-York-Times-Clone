@@ -7,6 +7,20 @@ export default function SectionsLayout() {
   return (
     <>
       <Link
+        to="/"
+        onClick={() => {
+          if (location.pathname === "/") {
+            window.scrollTo(0, 0);
+            dispatch(close());
+          } else {
+            dispatch(close());
+          }
+        }}
+        style={{ color: "black", textDecoration: "none" }}
+      >
+        Home Page
+      </Link>
+      <Link
         to="/section/us"
         onClick={() => dispatch(close())}
         style={{ color: "black", textDecoration: "none" }}
@@ -82,13 +96,6 @@ export default function SectionsLayout() {
         style={{ color: "black", textDecoration: "none" }}
       >
         Books
-      </Link>
-      <Link
-        to="/section/food"
-        onClick={() => dispatch(close())}
-        style={{ color: "black", textDecoration: "none" }}
-      >
-        Food
       </Link>
     </>
   );
