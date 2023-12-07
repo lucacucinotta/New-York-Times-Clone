@@ -188,7 +188,6 @@
     }
 
     .articleCard:not(:nth-child(4n+1)) {
-        max-width: 350px;
 
         .articleInfo {
             display: none;
@@ -203,7 +202,6 @@
 
             .img {
                 display: inline;
-                width: 350px;
                 height: 200px;
                 object-fit: cover;
             }
@@ -213,7 +211,5 @@
             }
 
         }
-
-
     }
 }
