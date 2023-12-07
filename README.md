@@ -1,5 +1,9 @@
-<div align="center"><img src="img/nyt-logo.png" width="150px"></div>
+<div align="center"><img src="src/assets/img/nyt-logo.png" width="150px"></div>
 <h1 align="center">New York Times Clone</h1>
+<br>
+<p align="center">
+Click here to visit the <a href="https://newyorktimes-website-clone.netlify.app/"><strong>website</strong></a>
+</p>
 
 ## 🗂️ Table of contents
 
