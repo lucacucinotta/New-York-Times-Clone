@@ -92,7 +92,8 @@ export default function Section() {
                       default:
                         return sectionName;
                     }
-                  })()}
+                  })()}{" "}
+                  News
                 </h1>
                 <div className={style.articleContainer}>
                   {data.map((article) => (

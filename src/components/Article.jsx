@@ -1,5 +1,6 @@
 import style from "../assets/SCSS/components/Article.module.scss";
 import PropTypes from "prop-types";
+import PlaceholderImg from "../assets/img/placeholder.png";
 
 export default function Article({ articleProp }) {
   const date = new Date(articleProp.published_date);
@@ -72,7 +73,9 @@ export default function Article({ articleProp }) {
               <img
                 className={style.img}
                 src={
-                  articleProp.multimedia ? articleProp.multimedia[0].url : null
+                  articleProp.multimedia
+                    ? articleProp.multimedia[0].url
+                    : PlaceholderImg
                 }
               />
               <span className={style.copyright}>

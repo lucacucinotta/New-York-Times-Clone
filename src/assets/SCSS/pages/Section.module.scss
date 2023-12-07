@@ -89,6 +89,10 @@
 }
 
 @media screen and (min-width: 768px) {
+    .articleSection {
+        font-size: 30px;
+    }
+
     .articleContainer {
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 20px;
@@ -96,6 +100,10 @@
 }
 
 @media screen and (min-width:1024px) {
+    .articleSection {
+        font-size: 35px;
+    }
+
     .articleContainer {
         grid-template-columns: repeat(3, 1fr);
     }

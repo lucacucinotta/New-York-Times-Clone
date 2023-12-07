@@ -17,33 +17,35 @@ export default function NotFound() {
         <Navbar />
       </header>
       <main>
-        <div className={style.notFoundDiv}>
-          <div>
-            <Link to="/" className={style.redirect}>
-              Go to Home Page »
-            </Link>
-            <h1>Page Not Found</h1>
+        <div className={style.container}>
+          <div className={style.notFoundDiv}>
+            <div>
+              <Link to="/" className={style.redirect}>
+                Go to Home Page »
+              </Link>
+              <h1>Page Not Found</h1>
+            </div>
+            <p className={style.notFoundMessage}>
+              We’re sorry, we seem to have lost this page, but we don’t want to
+              lose you
+            </p>
+            <form
+              className={style.notFoundForm}
+              onSubmit={(e) => {
+                e.preventDefault();
+                navigate(`/search/${searchData}`);
+              }}
+            >
+              <input
+                type="text"
+                placeholder="SEARCH"
+                value={searchData}
+                onChange={(e) => dispatch(change(e.target.value))}
+                className={style.notFoundBar}
+              />
+              <button className={style.notFoundButton}>GO</button>
+            </form>
           </div>
-          <p className={style.notFoundMessage}>
-            We’re sorry, we seem to have lost this page, but we don’t want to
-            lose you
-          </p>
-          <form
-            className={style.notFoundForm}
-            onSubmit={(e) => {
-              e.preventDefault();
-              navigate(`/search/${searchData}`);
-            }}
-          >
-            <input
-              type="text"
-              placeholder="SEARCH"
-              value={searchData}
-              onChange={(e) => dispatch(change(e.target.value))}
-              className={style.notFoundBar}
-            />
-            <button className={style.notFoundButton}>GO</button>
-          </form>
         </div>
       </main>
       <Footer />
