@@ -3,7 +3,7 @@ import { change } from "../states/searchBarSlice";
 import { useNavigate, Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import style from "../assets/SCSS/pages/NotFound.module.scss";
+import style from "../assets/SCSS/pages/NotFoundPage.module.scss";
 
 export default function NotFound() {
   const { searchData } = useSelector((state) => state.searchBarState);

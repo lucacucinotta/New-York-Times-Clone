@@ -1,17 +1,17 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Section from "./pages/Section";
-import Search from "./pages/Search";
-import NotFound from "./pages/NotFound";
+import HomePage from "./pages/HomePage";
+import SectionPage from "./pages/SectionPage";
+import SearchPage from "./pages/SearchPage";
+import NotFoundPage from "./pages/NotFoundPage";
 import "./assets/SCSS/index.scss";
 
 export default function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/section/:sectionName" element={<Section />} />
-      <Route path="/search/:searchQuery" element={<Search />} />
-      <Route path="*" element={<NotFound />} />
+      <Route path="/" element={<HomePage />} />
+      <Route path="/section/:sectionName" element={<SectionPage />} />
+      <Route path="/search/:searchQuery" element={<SearchPage />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 }

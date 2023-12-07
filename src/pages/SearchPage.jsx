@@ -7,11 +7,11 @@ import { DotLoader } from "react-spinners";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import SectionsLayout from "../components/SectionsLayout";
-import Article from "../components/Article";
+import SearchArticle from "../components/SearchArticle";
 import Footer from "../components/Footer";
-import style from "../assets/SCSS/pages/Section.module.scss";
+import style from "../assets/SCSS/pages/SearchPage.module.scss";
 
-export default function Section() {
+export default function Search() {
   const API_KEY = import.meta.env.VITE_API_KEY;
 
   const { isOpen } = useSelector((state) => state.sectionMenuState);
@@ -20,19 +20,20 @@ export default function Section() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { sectionName } = useParams();
+  const { searchQuery } = useParams();
 
   const fetchArticle = async () => {
     const res = await axios.get(
-      `https://api.nytimes.com/svc/topstories/v2/${sectionName}.json?api-key=${API_KEY}`
+      `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchQuery}&api-key=${API_KEY}`
     );
-    return res.data.results;
+    return res.data.response.docs;
   };
 
   const { data, isLoading, isError, error } = useQuery({
-    queryKey: ["article", sectionName],
+    queryKey: ["article", searchQuery],
     queryFn: fetchArticle,
-    enabled: !!sectionName,
+    enabled: !!searchQuery,
+    onSuccess: () => dispatch(change("")),
   });
 
   if (isError) {
@@ -64,9 +65,9 @@ export default function Section() {
             />
             <button className={style.searchButton}>GO</button>
           </form>
-          <div className={style.sectionsDiv}>
+          <div className={style.sectionDiv}>
             <h3>Sections</h3>
-            <div className={style.sectionsList}>
+            <div className={style.sectionList}>
               <SectionsLayout />
             </div>
           </div>
@@ -80,25 +81,21 @@ export default function Section() {
               </div>
             ) : (
               <>
-                <h1 className={style.articleSection}>
-                  {(() => {
-                    switch (sectionName) {
-                      case "us":
-                        return "U.S.";
-                      case "nyregion":
-                        return "N.Y.";
-                      case "realestate":
-                        return "Real Estate";
-                      default:
-                        return sectionName;
-                    }
-                  })()}{" "}
-                  News
-                </h1>
+                <div className={style.preArticle}>
+                  <p className={style.preTitle}>Showing result for : </p>
+                  <h1 className={style.searchTitle}>{searchQuery}</h1>
+                </div>
                 <div className={style.articleContainer}>
-                  {data.map((article) => (
-                    <Article key={article.title} articleProp={article} />
-                  ))}
+                  {data === 0 ? (
+                    <p>No results found</p>
+                  ) : (
+                    data.map((article) => (
+                      <SearchArticle
+                        key={article.headline.main}
+                        articleProp={article}
+                      />
+                    ))
+                  )}
                 </div>
               </>
             )}

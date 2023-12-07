@@ -9,7 +9,7 @@ import Navbar from "../components/Navbar";
 import SectionsLayout from "../components/SectionsLayout";
 import Article from "../components/Article";
 import Footer from "../components/Footer";
-import style from "../assets/SCSS/pages/Home.module.scss";
+import style from "../assets/SCSS/pages/HomePage.module.scss";
 
 export default function Home() {
   const API_KEY = import.meta.env.VITE_API_KEY;
