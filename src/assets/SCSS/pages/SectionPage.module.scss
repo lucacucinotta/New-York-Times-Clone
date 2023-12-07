@@ -39,8 +39,8 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 40px;
-        width: 70%;
-        text-align: center;
+        width: 100%;
+        justify-items: center;
     }
 }
 
