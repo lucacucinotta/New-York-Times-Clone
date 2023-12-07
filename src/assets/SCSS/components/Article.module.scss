@@ -178,6 +178,7 @@
                     max-width: 600px;
                     max-height: 400px;
                     object-fit: cover;
+                    object-position: center top;
                 }
 
                 .copyright {
@@ -202,8 +203,9 @@
 
             .img {
                 display: inline;
-                height: 200px;
+                height: 250px;
                 object-fit: cover;
+                object-position: center top;
             }
 
             .copyright {
