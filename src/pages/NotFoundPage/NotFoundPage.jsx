@@ -1,9 +1,10 @@
 import { useSelector, useDispatch } from "react-redux";
-import { change } from "../states/searchBarSlice";
+import { change } from "/src/states/searchBarSlice.js";
 import { useNavigate, Link } from "react-router-dom";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import style from "../assets/SCSS/pages/NotFoundPage.module.scss";
+import { Helmet } from "react-helmet";
+import Navbar from "/src/components/Navbar/Navbar";
+import Footer from "/src/components/Footer/Footer";
+import style from "./NotFoundPage.module.scss";
 
 export default function NotFound() {
   const { searchData } = useSelector((state) => state.searchBarState);
@@ -13,6 +14,9 @@ export default function NotFound() {
 
   return (
     <>
+      <Helmet>
+        <title>Not Found - The New York Times Clone</title>
+      </Helmet>
       <header>
         <Navbar />
       </header>

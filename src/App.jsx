@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import SectionPage from "./pages/SectionPage";
-import SearchPage from "./pages/SearchPage";
-import NotFoundPage from "./pages/NotFoundPage";
-import "./assets/SCSS/index.scss";
+import HomePage from "./pages/HomePage/HomePage";
+import SectionPage from "./pages/SectionPage/SectionPage";
+import SearchPage from "./pages/SearchPage/SearchPage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import "./index.scss";
 
 export default function App() {
   return (

@@ -1,6 +1,6 @@
-import style from "../assets/SCSS/components/Footer.module.scss";
-import Logo from "../assets/img/logo.svg";
-import SectionsLayout from "./SectionsLayout";
+import style from "./Footer.module.scss";
+import Logo from "/src/assets/img/logo.svg";
+import SectionsLayout from "../SectionsLayout/SectionsLayout";
 import { Link } from "react-router-dom";
 
 export default function Footer() {

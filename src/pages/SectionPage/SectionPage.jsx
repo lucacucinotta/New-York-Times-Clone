@@ -1,15 +1,16 @@
 import { useSelector, useDispatch } from "react-redux";
-import { change } from "../states/searchBarSlice";
-import { close } from "../states/sectionMenuSlice";
+import { change } from "/src/states/searchBarSlice";
+import { close } from "/src/states/sectionMenuSlice";
 import { useQuery } from "react-query";
 import { useParams, useNavigate } from "react-router-dom";
 import { DotLoader } from "react-spinners";
+import { Helmet } from "react-helmet";
 import axios from "axios";
-import Navbar from "../components/Navbar";
-import SectionsLayout from "../components/SectionsLayout";
-import Article from "../components/Article";
-import Footer from "../components/Footer";
-import style from "../assets/SCSS/pages/SectionPage.module.scss";
+import Navbar from "/src/components/Navbar/Navbar";
+import SectionsLayout from "/src/components/SectionsLayout/SectionsLayout";
+import Article from "/src/components/Article/Article";
+import Footer from "/src/components/Footer/Footer";
+import style from "./SectionPage.module.scss";
 
 export default function Section() {
   const API_KEY = import.meta.env.VITE_API_KEY;
@@ -42,6 +43,23 @@ export default function Section() {
 
   return (
     <>
+      <Helmet>
+        <title>
+          {(() => {
+            switch (sectionName) {
+              case "us":
+                return "U.S.";
+              case "nyregion":
+                return "N.Y.";
+              case "realestate":
+                return "Real Estate";
+              default:
+                return sectionName.toUpperCase();
+            }
+          })()}{" "}
+          - New York Times Clone
+        </title>
+      </Helmet>
       <header>
         <Navbar />
       </header>

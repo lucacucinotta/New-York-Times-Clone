@@ -1,4 +1,4 @@
-import style from "../assets/SCSS/components/SearchArticle.module.scss";
+import style from "./SearchArticle.module.scss";
 import PropTypes from "prop-types";
 
 export default function SearchArticle({ articleProp }) {

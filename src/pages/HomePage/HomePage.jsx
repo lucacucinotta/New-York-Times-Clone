@@ -1,15 +1,16 @@
 import { useSelector, useDispatch } from "react-redux";
-import { change } from "../states/searchBarSlice";
-import { close } from "../states/sectionMenuSlice";
+import { change } from "/src/states/searchBarSlice";
+import { close } from "/src/states/sectionMenuSlice";
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { DotLoader } from "react-spinners";
+import { Helmet } from "react-helmet";
 import axios from "axios";
-import Navbar from "../components/Navbar";
-import SectionsLayout from "../components/SectionsLayout";
-import Article from "../components/Article";
-import Footer from "../components/Footer";
-import style from "../assets/SCSS/pages/HomePage.module.scss";
+import Navbar from "/src/components/Navbar/Navbar";
+import SectionsLayout from "/src/components/SectionsLayout/SectionsLayout";
+import Article from "/src/components/Article/Article";
+import Footer from "/src/components/Footer/Footer";
+import style from "./HomePage.module.scss";
 
 export default function Home() {
   const API_KEY = import.meta.env.VITE_API_KEY;
@@ -39,6 +40,9 @@ export default function Home() {
 
   return (
     <>
+      <Helmet>
+        <title>The New York Times | Luca Cucinotta</title>
+      </Helmet>
       <header>
         <Navbar />
       </header>

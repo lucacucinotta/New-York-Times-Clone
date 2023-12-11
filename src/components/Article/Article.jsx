@@ -1,6 +1,6 @@
-import style from "../assets/SCSS/components/Article.module.scss";
+import style from "./Article.module.scss";
 import PropTypes from "prop-types";
-import PlaceholderImg from "../assets/img/placeholder.png";
+import PlaceholderImg from "/src/assets/img/placeholder.png";
 
 export default function Article({ articleProp }) {
   const date = new Date(articleProp.published_date);
@@ -29,7 +29,7 @@ export default function Article({ articleProp }) {
   return (
     <>
       {articleProp.title ? (
-        <article className={style.articleCard}>
+        <div className={style.articleCard}>
           <div className={style.articleInfo}>
             <p className={style.articleLabel}>
               {articleProp.section
@@ -85,7 +85,7 @@ export default function Article({ articleProp }) {
               </span>
             </div>
           </div>
-        </article>
+        </div>
       ) : null}
     </>
   );

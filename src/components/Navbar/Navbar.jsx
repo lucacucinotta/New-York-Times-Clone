@@ -4,13 +4,13 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useSelector, useDispatch } from "react-redux";
-import { open, close } from "../states/sectionMenuSlice";
-import { change } from "../states/searchBarSlice";
-import { show, hide } from "../states/searchBarShownSlice";
+import { open, close } from "/src/states/sectionMenuSlice";
+import { change } from "/src/states/searchBarSlice";
+import { show, hide } from "/src/states/searchBarShownSlice";
 import { Link, useNavigate } from "react-router-dom";
-import SectionsLayout from "./SectionsLayout";
-import style from "../assets/SCSS/components/Navbar.module.scss";
-import Logo from "../assets/img/logo.svg";
+import SectionsLayout from "../SectionsLayout/SectionsLayout";
+import style from "./Navbar.module.scss";
+import Logo from "/src/assets/img/logo.svg";
 
 export default function Navbar() {
   const date = new Date();

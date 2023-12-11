@@ -1,15 +1,16 @@
 import { useSelector, useDispatch } from "react-redux";
-import { change } from "../states/searchBarSlice";
-import { close } from "../states/sectionMenuSlice";
+import { change } from "/src/states/searchBarSlice";
+import { close } from "/src/states/sectionMenuSlice";
 import { useQuery } from "react-query";
 import { useParams, useNavigate } from "react-router-dom";
 import { DotLoader } from "react-spinners";
+import { Helmet } from "react-helmet";
 import axios from "axios";
-import Navbar from "../components/Navbar";
-import SectionsLayout from "../components/SectionsLayout";
-import SearchArticle from "../components/SearchArticle";
-import Footer from "../components/Footer";
-import style from "../assets/SCSS/pages/SearchPage.module.scss";
+import Navbar from "/src/components/Navbar/Navbar";
+import SectionsLayout from "/src/components/SectionsLayout/SectionsLayout";
+import SearchArticle from "/src/components/SearchArticle/SearchArticle";
+import Footer from "/src/components/Footer/Footer";
+import style from "./SearchPage.module.scss";
 
 export default function Search() {
   const API_KEY = import.meta.env.VITE_API_KEY;
@@ -43,6 +44,9 @@ export default function Search() {
 
   return (
     <>
+      <Helmet>
+        <title>Search - The New York Times Clone</title>
+      </Helmet>
       <header>
         <Navbar />
       </header>
@@ -65,9 +69,9 @@ export default function Search() {
             />
             <button className={style.searchButton}>GO</button>
           </form>
-          <div className={style.sectionDiv}>
+          <div className={style.sectionsDiv}>
             <h3>Sections</h3>
-            <div className={style.sectionList}>
+            <div className={style.sectionsList}>
               <SectionsLayout />
             </div>
           </div>
