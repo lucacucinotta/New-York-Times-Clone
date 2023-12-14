@@ -70,10 +70,10 @@ You can navigate between sections or perform a customized search easily even fro
 
 To offer users a complete experience, I realized several navigation pages within the site, using React Router. These pages include:
 
-- **HomePage**: the main point of entry, designed to welcome initial users and present the main content.
-- **SectionPage**: dedicated to the various sections of the site, offers targeted navigation through specific contents.
-- **SearchPage**: allows users to search for articles using a keyword, making it easier to find specific information.
-- **NotFoundPage**: displayed in case of non-existent article or error.
+- `HomePage`: the main point of entry, designed to welcome initial users and present the main content.
+- `SectionPage`: dedicated to the various sections of the site, offers targeted navigation through specific contents.
+- `SearchPage`: allows users to search for articles using a keyword, making it easier to find specific information.
+- `NotFoundPage`: displayed in case of non-existent article or error.
 
 ## 📱 Responsiveness
 
